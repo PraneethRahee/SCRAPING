@@ -1,0 +1,89 @@
+
+let addres=[];
+let y = document.getElementsByClassName("cont_sw_addr");
+for (var i=0; i<y.length; i++){
+let address = y[i].textContent;
+addres.push([address]);
+};
+
+let containers = document.getElementsByClassName("cntanr");
+let nameedss=[];
+for(let container of containers) {
+    var z=container.getElementsByClassName("contact-info");
+    if(z.length === 0) {
+        nameedss.push("");
+    } else {
+        var l;                                                           
+        for (var i=0; i<z.length; i++) {                                                                                     
+            var phone =""; 
+            l =z[i].getElementsByClassName("mobilesv");
+            for (let name of l) { 
+                switch (name.className.replace(" ","#")) {
+                    case 'mobilesv#icon-acb':
+                        phone+="0";
+                        break;
+                    case 'mobilesv#icon-yz':
+                        phone+="1";
+                        break;
+                    case 'mobilesv#icon-wx':
+                        phone+="2";
+                        break;
+                    case 'mobilesv#icon-vu':
+                        phone+="3";
+                        break;
+                    case 'mobilesv#icon-ts':
+                        phone+="4";
+                        break;
+                    case 'mobilesv#icon-rq':
+                        phone+="5";
+                        break;
+                    case 'mobilesv#icon-po':
+                        phone+="6";
+                        break;
+                    case 'mobilesv#icon-nm':
+                        phone+="7";
+                        break;
+                    case 'mobilesv#icon-lk':
+                        phone+="8";
+                        break;
+                    case 'mobilesv#icon-ji':
+                        phone+="9";
+                        break; 
+                    case 'mobilesv#icon-dc':
+                        phone+="+";
+                        break;
+                    case 'mobilesv#icon-fe':
+                        phone+="(";
+                        break;
+                    case 'mobilesv#icon-hg':
+                        phone+=")";
+                        break;
+                    case 'mobilesv#icon-ba':
+                        phone+="-";
+                        break;                                                                     
+                    default:
+                        phone+="x";
+                        break;
+                }
+            }                                                                             
+            nameedss.push([phone]);
+        }
+    }
+}                                                                         
+
+var x = document.getElementsByClassName("lng_cont_name");
+let myarray = []
+for (var i=0; i<x.length; i++){
+var nametext = x[i].textContent;
+myarray.push([nametext]);
+};                                                        
+function make_table() {
+    var table = '<table><thead><th>Name</th><th>Address</th><th>mobile</th></thead><tbody>';
+   for (var i=0; i<myarray.length; i++) {
+            table += '<tr><td>'+ myarray[i]+ '</td><td>'+addres[i]+ '</td><td>'+nameedss[i]+'</td></tr>';
+    };
+ 
+var w = window.open("");
+w.document.write(table); 
+}
+make_table()
